@@ -29,3 +29,4 @@ if args.motif:
         print("I FOUND a motif on the master")
     else:
         print("NOT FOUND any motif ")
+#This is a comment line
