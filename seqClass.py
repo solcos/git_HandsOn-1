@@ -16,12 +16,15 @@ args.seq = args.seq.upper()                 # Note we just added this line
 if re.search('^[ACGTU]+$', args.seq):
     if re.search('T', args.seq):
         print ('The sequence is DNA')
+#if you sequence have a T you are sure that this is a DNA
     elif re.search('U', args.seq):
         print ('The sequence is RNA')
+#when you find U in your sequence you are sure that this is RNA
     else:
         print ('The sequence can be DNA or RNA')
 else:
     print ('The sequence is not DNA nor RNA')
+#If your sequence is acac you are not able to know if is DNA or RNA
 
 if args.motif:
     args.motif = args.motif.upper()
