@@ -11,26 +11,21 @@ if len(sys.argv) == 1:
     sys.exit(1)
 
 args = parser.parse_args()
-
-args.seq = args.seq.upper()                 # Note we just added this line
-if re.search('^[ACGTU]+$', args.seq):
-    if re.search('T', args.seq):
-        print ('The sequence is DNA')
-#if you sequence have a T you are sure that this is a DNA
-    elif re.search('U', args.seq):
-        print ('The sequence is RNA')
-#when you find U in your sequence you are sure that this is RNA
+args.seq = args.seq.upper()                 
+if re.search('^[ACGTU]+$', args.seq): 
+    if re.search('^[ACGT]+$', args.seq): # If the sequence have T and not U is DNA
+        print ('The sequence is DNA') 
+    elif re.search('^[ACGU]+$', args.seq): # If the sequence have U and not T is RNA
+        print ('The sequence is RNA') 
     else:
-        print ('The sequence can be DNA or RNA')
+        print ('The sequence is not DNA nor RNA') # If we see both, then it can't be RNA or DNA
 else:
-    print ('The sequence is not DNA nor RNA')
-#If your sequence is acac you are not able to know if is DNA or RNA
-
+    print ('The sequence is not DNA nor RNA') 
 if args.motif:
     args.motif = args.motif.upper()
     print(f'Motif search enabled: looking for motif "{args.motif}" in sequence "{args.seq}"... ', end = '')
     if re.search(args.motif, args.seq):
-        print("FOUND")
+        print("FOUND") #if it find a motif it prints found
     else:
-        print("NOT FOUND")
-#This is a comment line
+        print("NOT FOUND") #if it doesn't find a motif prints not found
+
